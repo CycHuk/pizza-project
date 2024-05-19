@@ -1,0 +1,85 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model Category {
+  id          Int @id @default(autoincrement())
+  title       String @db.VarChar(50)
+  product     Product[]
+  subcategory Subcategory[]
+}
+
+model Subcategory {
+  id               Int @id @default(autoincrement())
+  title            String @db.VarChar(50)
+
+  subcategoryLink  SubcategoryLink[] 
+  categoryid       Int
+  category         Category @relation(fields: [categoryid], references: [id])
+}
+
+model SubcategoryLink {  
+  productId     String 
+  product       Product @relation(fields: [productId], references: [title])
+  subcategoryId Int
+  subcategory   Subcategory @relation(fields: [subcategoryId], references: [id])
+
+   @@id(name: "SubcategoryId", [productId, subcategoryId])
+}
+
+model Product {
+  title        String @id @db.VarChar(50)
+  imgUrl       String @db.VarChar(100)
+  rating       Int
+  description  String @db.VarChar(255)
+  unit         String @db.VarChar(10)
+  variability  VariabilityProduct[]
+  categoryId   Int
+  category     Category @relation(fields: [categoryId], references: [id])
+  subcategory  SubcategoryLink[]
+}
+
+model VariabilityProduct {
+  id              Int @id @default(autoincrement())
+  sizes           String @db.VarChar(10)
+  price           Int
+  productid       String @db.VarChar(50)
+  product         Product @relation(fields: [productid], references: [title])
+  order           OrderItems[]
+} 
+
+model Order {
+  id           Int @id @default(autoincrement())
+  userId       String @db.VarChar(100)
+  user         User @relation(fields: [userId], references: [id]) 
+  address      String @db.VarChar(255)
+  orderDate    DateTime
+  deliveryDate DateTime
+  comments     String? @db.VarChar(255)
+  status       String   @default("delivery")
+  orderItems   OrderItems[]
+}
+
+model OrderItems {
+  productId Int
+  product   VariabilityProduct @relation(fields: [productId], references: [id])
+  orderId   Int
+  order     Order @relation(fields: [orderId], references: [id])
+  quantity  Int
+
+  @@id(name: "OrderLinkyId", [productId, orderId])
+}
+
+model User {
+  id             String @id @default(uuid()) @db.VarChar(100)
+  name           String @db.VarChar(80)
+  phoneNumber    String @unique @db.VarChar(20)
+  password       String @db.VarChar(100)
+  addressDefault String? @db.VarChar(255)
+  order          Order[]
+}

@@ -1,0 +1,22 @@
+.empty {
+  display: grid;
+  place-items: center;
+  height: 100%;
+
+  h1 {
+    color: #f7d22d;
+    font-size: 32px;
+    font-weight: 800;
+    line-height: 17px;
+    margin-bottom: 30px;
+  }
+
+  p {
+    max-width: 500px;
+    color: #9d9d9b;
+    font-size: 15px;
+    font-weight: 600;
+    line-height: 19px;
+    text-align: center;
+  }
+}

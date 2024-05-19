@@ -1,0 +1,26 @@
+.nav {
+  display: grid;
+  place-items: center;
+  padding: 20px 0;
+  font-size: 20px;
+  font-weight: 600;
+  color: #0e0c0d;
+  overflow-x: auto;
+  ul {
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+
+    *:not(:last-child) {
+      margin-right: 40px;
+    }
+  }
+
+  &::-webkit-scrollbar {
+    width: 0;
+  }
+}
+
+.actine {
+  color: #f7d22d;
+}

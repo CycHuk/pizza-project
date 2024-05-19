@@ -1,0 +1,49 @@
+.cart {
+  max-width: 750px;
+  margin: 0 auto;
+  h1 {
+    color: #f7d22d;
+    font-size: 36px;
+    font-weight: 800;
+    margin-bottom: 20px;
+  }
+}
+
+.items {
+  width: 100%;
+  display: grid;
+  place-items: center;
+}
+
+.decoration {
+  display: grid;
+  place-items: end;
+  p {
+    color: #0e0c0d;
+    font-size: 24px;
+    font-weight: 600;
+    line-height: 17px;
+    word-wrap: break-word;
+    margin-bottom: 30px;
+  }
+
+  span {
+    color: #f7d22d;
+    font-size: 36px;
+    font-family: Montserrat;
+    font-weight: 800;
+    word-wrap: break-word;
+  }
+
+  button {
+    width: 224px;
+    height: 55px;
+    border-radius: 8px;
+    background-color: #f7d22d;
+
+    color: #231f20;
+    font-size: 15px;
+    font-weight: 800;
+    line-height: 28px;
+  }
+}

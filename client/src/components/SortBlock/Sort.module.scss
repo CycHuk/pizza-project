@@ -1,0 +1,41 @@
+/* SortingSelector.module.scss */
+
+.sorting-selector-container {
+  position: relative;
+  display: flex;
+  align-items: center;
+  h3 {
+    margin-right: 10px;
+  }
+
+  .dropdown-container {
+    position: relative;
+    display: inline-block;
+
+    > div {
+      cursor: pointer;
+      color: #f7d22d;
+    }
+
+    .dropdown-options {
+      color: #0e0c0d;
+      position: absolute;
+      top: 110%;
+      right: 0;
+      min-width: 180px;
+      border: 1px solid #0e0c0d;
+      background-color: white;
+      border-radius: 5px;
+      z-index: 1;
+
+      > div {
+        padding: 5px;
+        cursor: pointer;
+
+        &:hover {
+          color: #f7d22d;
+        }
+      }
+    }
+  }
+}
